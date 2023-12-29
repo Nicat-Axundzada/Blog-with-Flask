@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: #f1f1f1;
+        color: black;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      a {
+        text-decoration: none;
+        color: black;
+      }
+
+      .header {
+        margin-top: 40px;
+        margin-bottom: 50px;
+      }
+      .posts {
+        background-color: white;
+        display: flex;
+        height: 350px;
+        margin-bottom: 50px;
+        margin-right: 50px;
+        margin-left: 50px;
+      }
+      .posts .img-container {
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+      }
+      .posts div h4 {
+        text-align: center;
+        font-size: 30px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+      }
+      .posts div p {
+        text-align: center;
+        padding: 50px;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Lorem's Blog</h1>
+    </div>
+    {% for post in posts %}
+    <a href="{{url_for('post_page', post_id=post.id)}}" class="posts">
+      <div
+        class="img-container"
+        style="background-image: url('data:image/jpeg;base64,{{ post.blog_image|b64encode }}')"
+      ></div>
+      <div>
+        <h4>{{post.title}}</h4>
+        <p>{{post.description}}</p>
+      </div>
+    </a>
+    {% endfor %}
+  </body>
+</html>

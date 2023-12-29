@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Post Id {{post.id}}</title>
+    <style>
+      .img-container {
+        width: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="img-container"
+      style="background-image: url('data:image/jpeg;base64,{{ post.blog_image|b64encode }}')"
+    ></div>
+    <h1>{{post.title}}</h1>
+    <p>{{ post. content}}</p>
+  </body>
+</html>
